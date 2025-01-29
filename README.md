@@ -1,2 +1,4 @@
-# CoreTestnet
-tests from web3bridge
+0xD9eFa84AD07Eb993343Eecf7c9fDD3189A37B0D6
+
+
+core testnet
