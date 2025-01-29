@@ -145,7 +145,7 @@ const App = () => {
                 </div>
               ))
             ) : (
-              <p>No tasks found.</p>
+              <p> </p>
             )}
           </h3>
           </button>
