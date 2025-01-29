@@ -36,7 +36,7 @@ const App = () => {
         await tx.wait();
         setTaskTitle('');
         setTaskText('');
-        console.log('Task added successfully');
+        //console.log('Task added successfully');
       } catch (err) {
         setError(err.message);
       } finally {
@@ -62,7 +62,7 @@ const App = () => {
         const tx = await contract.deleteTask(taskId);
         await tx.wait();
         setTaskId('');
-        console.log('Task deleted successfully');
+        //console.log('Task deleted successfully');
       } catch (err) {
         setError(err.message);
       } finally {
@@ -81,9 +81,9 @@ const App = () => {
         const contract = new ethers.Contract(contractAddress, abi, provider);
 
         const tasks = await contract.getMyTask();
-        console.log(tasks)
+        //console.log(tasks)
         setTasks(tasks);
-        console.log('Tasks fetched successfully');
+        //console.log('Tasks fetched successfully');
       } catch (err) {
         setError(err.message);
       } finally {
@@ -136,8 +136,19 @@ const App = () => {
         <h2>All Tasks</h2>
         <button onClick={getTasks} disabled={loading}>
           {loading ? 'Fetching Tasks...' : 'Get Tasks'}
-          <h3> </h3>
-        </button>
+          <h3> 
+            {tasks.length > 0 ? (
+              tasks.map((task, index) => (
+                <div key={index} className="bg-gray-800 p-4 rounded-lg mb-2">
+                  <h4 className="font-bold">{task.taskTitle}</h4>
+                  <p>{task.taskText}</p>
+                </div>
+              ))
+            ) : (
+              <p>No tasks found.</p>
+            )}
+          </h3>
+          </button>
 
         <ul>
           {tasks.map((task, index) => (
